@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FFFFFF;
+  --color-paper: #FFF5F7;
+  --color-piggy: #FFB5B5;
+  --color-piggy-dark: #E88B8B;
+  --color-ink: #3D3329;
+  --color-pencil: #8B7E6A;
+  --color-mint: #C8E6C9;
+  --color-warn: #FFE082;
+  --color-danger: #EF9A9A;
+
+  --font-family-hand: 'Mali', 'Sarabun', cursive, sans-serif;
+}
+
+/* ===== Custom Animations ===== */
+
+@keyframes bounce-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes tail-wag {
+  0%, 100% { transform-origin: left center; transform: rotate(-10deg); }
+  50% { transform-origin: left center; transform: rotate(10deg); }
+}
+
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+/* ===== Global Styles ===== */
+
+body {
+  font-family: var(--font-family-hand);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-piggy);
+  border-radius: 4px;
+}
+
+/* Doodle input focus */
+input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--color-piggy);
+  outline-offset: 1px;
+}

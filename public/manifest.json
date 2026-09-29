@@ -1,0 +1,17 @@
+{
+  "name": "สต็อกของในห้อง — หมูเด้ง",
+  "short_name": "หมูเด้งสต็อก",
+  "description": "เว็บแอปจัดการสต็อกของใช้ในห้อง สไตล์ Doodle หมูเด้ง",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E7",
+  "theme_color": "#FFB5B5",
+  "lang": "th",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
