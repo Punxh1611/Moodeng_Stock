@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "srvx"
+    "start": "node server.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.0",
