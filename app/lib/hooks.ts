@@ -138,3 +138,42 @@ export function useNotes() {
 
   return { notes, isLoading, addNote, toggleNote, deleteNote };
 }
+
+export function useKitchen() {
+  const [items, setItems] = useState<import('~/lib/types').FridgeNoteItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchItems = useCallback(async () => {
+    setIsLoading(true);
+    const { data, error } = await supabase.from('fridge_notes').select('*').order('created_at', { ascending: false });
+    if (!error && data) setItems(data);
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
+
+  const addItem = async (data: Omit<import('~/lib/types').FridgeNoteItem, 'id' | 'created_at'>) => {
+    const { data: newItem, error } = await supabase.from('fridge_notes').insert([data]).select().single();
+    if (!error && newItem) {
+      setItems(prev => [newItem, ...prev]);
+    }
+  };
+
+  const updateItem = async (id: string, data: Partial<import('~/lib/types').FridgeNoteItem>) => {
+    const { data: updated, error } = await supabase.from('fridge_notes').update(data).eq('id', id).select().single();
+    if (!error && updated) {
+      setItems(prev => prev.map(item => item.id === id ? { ...item, ...updated } : item));
+    }
+  };
+
+  const deleteItem = async (id: string) => {
+    const { error } = await supabase.from('fridge_notes').delete().eq('id', id);
+    if (!error) {
+      setItems(prev => prev.filter(item => item.id !== id));
+    }
+  };
+
+  return { items, isLoading, addItem, updateItem, deleteItem };
+}

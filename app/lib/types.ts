@@ -52,3 +52,12 @@ export interface CartItem {
   category?: Category
   unit?: string
 }
+
+export interface FridgeNoteItem {
+  id: string;
+  type: 'menu' | 'note';
+  content: string;
+  is_today: boolean;
+  note_style: string;
+  created_at: string;
+}

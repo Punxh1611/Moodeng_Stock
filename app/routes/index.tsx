@@ -1,11 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import React, { useState } from 'react';
-import { TabBar } from '~/components/ui/TabBar';
+import { TabBar, TabType } from '~/components/ui/TabBar';
 import { MooDengMascot } from '~/components/svg/MooDengMascot';
 
 import { StockTab } from '~/components/stock/StockTab';
 import { ShoppingTab } from '~/components/shopping/ShoppingTab';
 import { NotesTab } from '~/components/notes/NotesTab';
+import { KitchenTab } from '~/components/kitchen/KitchenTab';
 
 export const Route = createFileRoute('/')({
   component: IndexPage,
@@ -17,7 +18,7 @@ export const Route = createFileRoute('/')({
 });
 
 function IndexPage() {
-  const [activeTab, setActiveTab] = useState<'stock' | 'shopping' | 'notes'>('stock');
+  const [activeTab, setActiveTab] = useState<TabType>('stock');
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
@@ -32,6 +33,7 @@ function IndexPage() {
         {activeTab === 'stock' && <StockTab />}
         {activeTab === 'shopping' && <ShoppingTab />}
         {activeTab === 'notes' && <NotesTab />}
+        {activeTab === 'kitchen' && <KitchenTab />}
       </main>
     </div>
   );
