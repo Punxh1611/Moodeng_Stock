@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Item, CartItem, CATEGORIES, UNITS, Category } from '~/lib/types';
 import { DoodleButton } from '~/components/ui/DoodleButton';
+import { ToastAlert } from '~/components/ui/ToastAlert';
 
 interface ShoppingFormProps {
   items: Item[];
@@ -14,13 +15,20 @@ export function ShoppingForm({ items, onAddToCart }: ShoppingFormProps) {
   const [newUnit, setNewUnit] = useState(UNITS[0]);
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState<string>('');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const isNew = selectedItemId === 'new';
   const selectedItem = items.find(i => i.id === selectedItemId);
 
   const handleSubmit = () => {
-    if (!selectedItemId) return alert('กรุณาเลือกของ');
-    if (isNew && !newName.trim()) return alert('กรุณาใส่ชื่อของใหม่');
+    if (!selectedItemId) {
+      setErrorMsg('กรุณาเลือกของ');
+      return;
+    }
+    if (isNew && !newName.trim()) {
+      setErrorMsg('กรุณาใส่ชื่อของใหม่');
+      return;
+    }
     
     const cartItem: CartItem = isNew 
       ? {
@@ -127,6 +135,8 @@ export function ShoppingForm({ items, onAddToCart }: ShoppingFormProps) {
           + หยิบใส่ตะกร้า
         </DoodleButton>
       </div>
+      
+      {errorMsg && <ToastAlert message={errorMsg} onClose={() => setErrorMsg(null)} />}
     </div>
   );
 }

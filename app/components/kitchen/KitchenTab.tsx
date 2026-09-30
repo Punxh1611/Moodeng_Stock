@@ -5,6 +5,7 @@ import { MooDengMascot } from '~/components/svg/MooDengMascot';
 import { ChefIcon, PlusIcon, TrashIcon, FoodIcon, NoteIcon, CloseIcon, SaveIcon } from '~/components/svg/KitchenIcons';
 import { useKitchen } from '~/lib/hooks';
 import { FridgeNoteItem } from '~/lib/types';
+import { ToastAlert } from '~/components/ui/ToastAlert';
 
 export function KitchenTab() {
   const { items, isLoading, addItem, updateItem, deleteItem } = useKitchen();
@@ -14,11 +15,15 @@ export function KitchenTab() {
   const [newType, setNewType] = useState<'menu' | 'note'>('menu');
   const [newStyle, setNewStyle] = useState<NoteStyle>('yellow-classic');
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   
   const [isConfirmingDelete, setIsConfirmingDelete] = useState<string | null>(null);
 
   const handleSave = async () => {
-    if (!newContent.trim()) return alert('ใส่ข้อความก่อนจ้า');
+    if (!newContent.trim()) {
+      setErrorMsg('ใส่ข้อความก่อนจ้า');
+      return;
+    }
     
     if (editingId) {
       await updateItem(editingId, { 
@@ -121,7 +126,7 @@ export function KitchenTab() {
               {item.type === 'menu' && (
                 <button 
                   onClick={() => setAsTodayMenu(item.id)}
-                  className="absolute -top-3 -right-3 bg-white text-xs font-bold border-2 border-piggy-dark text-ink px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm z-20 hover:bg-piggy"
+                  className="absolute -top-3 -right-3 bg-white text-xs font-bold border-2 border-piggy-dark text-ink px-2 py-1 rounded-full shadow-sm z-20 hover:bg-piggy"
                 >
                   กินวันนี้!
                 </button>
@@ -238,6 +243,8 @@ export function KitchenTab() {
           </div>
         </div>
       )}
+
+      {errorMsg && <ToastAlert message={errorMsg} onClose={() => setErrorMsg(null)} />}
 
     </div>
   );

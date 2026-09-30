@@ -4,11 +4,13 @@ import { CartItem } from '~/lib/types';
 import { ShoppingForm } from './ShoppingForm';
 import { ShoppingCart } from './ShoppingCart';
 import { ShoppingHistory } from './ShoppingHistory';
+import { ToastAlert } from '~/components/ui/ToastAlert';
 
 export function ShoppingTab() {
   const { items } = useItems();
   const { trips, submitTrip, isLoading } = useShopping();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [toast, setToast] = useState<{message: string, variant: 'success' | 'error'} | null>(null);
   
   const handleAddToCart = (item: CartItem) => {
     setCartItems(prev => [...prev, item]);
@@ -22,7 +24,7 @@ export function ShoppingTab() {
     if (cartItems.length === 0) return;
     await submitTrip(cartItems);
     setCartItems([]);
-    alert('อัปเดตสต็อกเรียบร้อยแล้ว!');
+    setToast({ message: 'อัปเดตสต็อกเรียบร้อยแล้ว!', variant: 'success' });
   };
 
   return (
@@ -35,6 +37,8 @@ export function ShoppingTab() {
         isSubmitting={isLoading} 
       />
       <ShoppingHistory trips={trips} onViewTrip={() => {}} />
+      
+      {toast && <ToastAlert message={toast.message} variant={toast.variant} onClose={() => setToast(null)} />}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Item, Category, CATEGORIES, UNITS } from '~/lib/types';
 import { DoodleButton } from '~/components/ui/DoodleButton';
 import { MooDengMascot } from '~/components/svg/MooDengMascot';
+import { ToastAlert } from '~/components/ui/ToastAlert';
 
 interface ItemDetailPopupProps {
   item?: Item | null;
@@ -19,9 +20,13 @@ export function ItemDetailPopup({ item, onSave, onDelete, onClose }: ItemDetailP
   const [pricePerUnit, setPricePerUnit] = useState(item?.price_per_unit || '');
   const [note, setNote] = useState(item?.note || '');
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSave = () => {
-    if (!name.trim()) return alert('กรุณาใส่ชื่อของ');
+    if (!name.trim()) {
+      setErrorMsg('กรุณาใส่ชื่อของ');
+      return;
+    }
     onSave({
       name: name.trim(),
       category,
@@ -135,6 +140,8 @@ export function ItemDetailPopup({ item, onSave, onDelete, onClose }: ItemDetailP
           )}
         </div>
       </div>
+      
+      {errorMsg && <ToastAlert message={errorMsg} onClose={() => setErrorMsg(null)} />}
     </div>
   );
 }
