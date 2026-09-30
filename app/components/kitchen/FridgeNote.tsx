@@ -55,7 +55,7 @@ export function FridgeNote({ content, noteStyle, isTodayMenu, onEdit, onDelete }
 
       <button 
         onClick={(e) => { e.stopPropagation(); onDelete?.(); }}
-        className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 hover:bg-white text-danger w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
+        className="absolute bottom-2 right-2 bg-white/80 hover:bg-white text-danger w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
       >
         <TrashIcon className="w-4 h-4" />
       </button>

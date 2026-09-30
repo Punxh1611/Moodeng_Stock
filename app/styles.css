@@ -62,3 +62,8 @@ input:focus, select:focus, textarea:focus {
   outline: 3px solid var(--color-piggy);
   outline-offset: 1px;
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
