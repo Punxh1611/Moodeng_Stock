@@ -51,7 +51,7 @@ export function TripDetailPopup({ trip, getTripItems, onClose }: TripDetailPopup
                 return (
                   <div key={item.id} className="bg-white border-2 border-ink rounded-xl p-3 flex justify-between items-center shadow-sm hover:-translate-y-1 transition-transform">
                     <div className="flex flex-col">
-                      <span className="font-bold text-ink">{stockItem?.name || 'ของที่ถูกลบไปแล้ว'}</span>
+                      <span className="font-bold text-ink">{item.item_name || stockItem?.name || 'ของที่ถูกลบไปแล้ว'}</span>
                       <span className="text-sm text-pencil font-hand">{item.quantity} {stockItem?.unit || 'ชิ้น'}</span>
                     </div>
                     <div className="font-bold text-lg text-ink font-hand">฿{item.price_paid}</div>

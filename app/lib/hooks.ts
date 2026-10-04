@@ -89,6 +89,7 @@ export function useShopping() {
         await supabase.from('shopping_trip_items').insert([{
           trip_id: trip.id,
           item_id: itemId,
+          item_name: item.item_name,
           quantity: item.quantity,
           price_paid: item.price_paid
         }]);
