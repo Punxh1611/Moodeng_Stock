@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useItems, useShopping } from '~/lib/hooks';
 import { CartItem, ShoppingTrip } from '~/lib/types';
 import { ShoppingForm } from './ShoppingForm';
@@ -10,7 +10,20 @@ import { TripDetailPopup } from './TripDetailPopup';
 export function ShoppingTab() {
   const { items } = useItems();
   const { trips, submitTrip, getTripItems, isLoading } = useShopping();
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('moodeng_cart');
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) {}
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('moodeng_cart', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const [toast, setToast] = useState<{message: string, variant: 'success' | 'error'} | null>(null);
   const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState<ShoppingTrip | null>(null);
