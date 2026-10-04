@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useItems, useShopping } from '~/lib/hooks';
-import { CartItem } from '~/lib/types';
+import { CartItem, ShoppingTrip } from '~/lib/types';
 import { ShoppingForm } from './ShoppingForm';
 import { ShoppingCart } from './ShoppingCart';
 import { ShoppingHistory } from './ShoppingHistory';
 import { ToastAlert } from '~/components/ui/ToastAlert';
+import { TripDetailPopup } from './TripDetailPopup';
 
 export function ShoppingTab() {
   const { items } = useItems();
-  const { trips, submitTrip, isLoading } = useShopping();
+  const { trips, submitTrip, getTripItems, isLoading } = useShopping();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [toast, setToast] = useState<{message: string, variant: 'success' | 'error'} | null>(null);
+  const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
+  const [selectedTrip, setSelectedTrip] = useState<ShoppingTrip | null>(null);
   
   const handleAddToCart = (item: CartItem) => {
     setCartItems(prev => [...prev, item]);
@@ -21,10 +24,15 @@ export function ShoppingTab() {
   };
 
   const handleSubmitCart = async () => {
-    if (cartItems.length === 0) return;
-    await submitTrip(cartItems);
-    setCartItems([]);
-    setToast({ message: 'อัปเดตสต็อกเรียบร้อยแล้ว!', variant: 'success' });
+    if (cartItems.length === 0 || isSubmittingLocal) return;
+    setIsSubmittingLocal(true);
+    try {
+      await submitTrip(cartItems);
+      setCartItems([]);
+      setToast({ message: 'อัปเดตสต็อกเรียบร้อยแล้ว!', variant: 'success' });
+    } finally {
+      setIsSubmittingLocal(false);
+    }
   };
 
   return (
@@ -34,11 +42,19 @@ export function ShoppingTab() {
         cartItems={cartItems} 
         onRemoveItem={handleRemoveFromCart} 
         onSubmit={handleSubmitCart} 
-        isSubmitting={isLoading} 
+        isSubmitting={isSubmittingLocal} 
       />
-      <ShoppingHistory trips={trips} onViewTrip={() => {}} />
+      <ShoppingHistory trips={trips} onViewTrip={setSelectedTrip} />
       
       {toast && <ToastAlert message={toast.message} variant={toast.variant} onClose={() => setToast(null)} />}
+      
+      {selectedTrip && (
+        <TripDetailPopup 
+          trip={selectedTrip} 
+          getTripItems={getTripItems} 
+          onClose={() => setSelectedTrip(null)} 
+        />
+      )}
     </div>
   );
 }

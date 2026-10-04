@@ -73,8 +73,15 @@ export function useShopping() {
 
     for (const item of cartItems) {
       let itemId = item.item_id;
-      if (item.is_new && item.new_item_data) {
-        const { data: newItem } = await supabase.from('items').insert([item.new_item_data]).select().single();
+      if (item.is_new) {
+        const new_item_data = {
+           name: item.item_name,
+           category: item.category || 'อื่นๆ',
+           quantity: 0,
+           unit: item.unit || 'ชิ้น',
+           low_threshold: 2
+        };
+        const { data: newItem } = await supabase.from('items').insert([new_item_data]).select().single();
         if (newItem) itemId = newItem.id;
       }
       

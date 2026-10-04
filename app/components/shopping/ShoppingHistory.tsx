@@ -5,7 +5,7 @@ import { DoodleButton } from '~/components/ui/DoodleButton';
 
 interface ShoppingHistoryProps {
   trips: ShoppingTrip[];
-  onViewTrip: (id: string) => void;
+  onViewTrip: (trip: ShoppingTrip) => void;
 }
 
 export function ShoppingHistory({ trips, onViewTrip }: ShoppingHistoryProps) {
@@ -29,7 +29,7 @@ export function ShoppingHistory({ trips, onViewTrip }: ShoppingHistoryProps) {
                   รวม: ฿{trip.total_cost}
                 </div>
               </div>
-              <DoodleButton size="sm" variant="ghost" onClick={() => onViewTrip(trip.id)}>
+              <DoodleButton size="sm" variant="ghost" onClick={() => onViewTrip(trip)}>
                 ดู
               </DoodleButton>
             </DoodleBorder>
