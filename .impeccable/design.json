@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T12:01:00.000Z",
+  "title": "Design System: Moodeng Stock",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Piggy Pink",
+        "canonical": "#FFB5B5",
+        "tonalRamp": ["#681F1F", "#933131", "#BD4A4A", "#E88B8B", "#FFB5B5", "#FFCCCC", "#FFE2E2", "#FFF5F5"]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Deep Piggy Pink",
+        "canonical": "#E88B8B",
+        "tonalRamp": ["#5A1A1A", "#7E2727", "#B34242", "#E88B8B", "#F5AFA0", "#F9CFC5", "#FDE9E4", "#FFF8F6"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Blush Paper",
+        "canonical": "#FFF5F7",
+        "tonalRamp": ["#3E2D32", "#63474F", "#8E6974", "#B88F9C", "#DCBCC6", "#F2DDE3", "#FCEFF2", "#FFF5F7"]
+      },
+      "neutral-canvas": {
+        "role": "neutral",
+        "displayName": "Cream Canvas",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#202020", "#404040", "#707070", "#A0A0A0", "#C8C8C8", "#E6E6E6", "#F6F6F6", "#FFFFFF"]
+      },
+      "neutral-ink": {
+        "role": "neutral",
+        "displayName": "Espresso Ink",
+        "canonical": "#3D3329",
+        "tonalRamp": ["#1C1610", "#2F271E", "#3D3329", "#584B3D", "#766654", "#9E8C78", "#C7B9A9", "#EAE2D8"]
+      },
+      "neutral-pencil": {
+        "role": "neutral",
+        "displayName": "Pencil Taupe",
+        "canonical": "#8B7E6A",
+        "tonalRamp": ["#2C2720", "#484034", "#695E4F", "#8B7E6A", "#AA9C87", "#C5B9A6", "#DFD7CA", "#F3EFE9"]
+      },
+      "status-warn": {
+        "role": "tertiary",
+        "displayName": "Honey Warm",
+        "canonical": "#FFE082",
+        "tonalRamp": ["#4F3E00", "#7A6100", "#AA8800", "#DCB21C", "#FFE082", "#FFECB0", "#FFF5D6", "#FFFAEB"]
+      },
+      "status-danger": {
+        "role": "tertiary",
+        "displayName": "Strawberry Red",
+        "canonical": "#EF9A9A",
+        "tonalRamp": ["#561616", "#7D2222", "#AD3939", "#DE6262", "#EF9A9A", "#F6BCBC", "#FBDDDD", "#FEF2F2"]
+      },
+      "status-mint": {
+        "role": "secondary",
+        "displayName": "Fresh Mint",
+        "canonical": "#C8E6C9",
+        "tonalRamp": ["#143B17", "#1E5722", "#2E7C34", "#4BAA53", "#81C784", "#A5D6A7", "#C8E6C9", "#E8F5E9"]
+      },
+      "alert-danger": {
+        "role": "tertiary",
+        "displayName": "Vivid Coral",
+        "canonical": "#EF665B",
+        "tonalRamp": ["#5B140F", "#821E17", "#B53026", "#DF4C3F", "#EF665B", "#F5938B", "#F9BFB9", "#FDE5E3"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero numbers and main stock counters" },
+      "headline": { "displayName": "Headline", "purpose": "Screen titles and drawer headers" },
+      "title": { "displayName": "Title", "purpose": "Card titles and modal subheadings" },
+      "body": { "displayName": "Body", "purpose": "Readable descriptions and note texts" },
+      "label": { "displayName": "Label", "purpose": "Button labels, units, and tags" }
+    },
+    "shadows": [
+      {
+        "name": "grounding-subtle",
+        "value": "0 2px 4px rgba(61, 51, 41, 0.08)",
+        "purpose": "Soft grounding shadow under cards and active buttons."
+      },
+      {
+        "name": "floating-modal",
+        "value": "0 10px 25px -5px rgba(61, 51, 41, 0.2)",
+        "purpose": "Elevated modal cards and floating notification pills."
+      }
+    ],
+    "motion": [
+      {
+        "name": "bounce-badge",
+        "value": "bounce-badge 1.5s infinite ease-in-out",
+        "purpose": "Attention grabber for urgent items like low/zero stock."
+      },
+      {
+        "name": "wiggle",
+        "value": "wiggle 0.3s ease-out",
+        "purpose": "Entrance wiggle for playful modals and popups."
+      },
+      {
+        "name": "pop-in",
+        "value": "pop-in 0.3s ease-out",
+        "purpose": "Smooth scale-and-fade for toasts and tooltips."
+      }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "480px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Doodle Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tactile pink action button with chunky espresso outline.",
+      "html": "<button class=\"ds-btn-primary\">🦛 อัปเดตสต็อก!</button>",
+      "css": ".ds-btn-primary { font-family: 'Mali', cursive, sans-serif; font-weight: 700; background-color: #FFB5B5; color: #3D3329; border: 2px solid #3D3329; border-radius: 16px; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: transform 0.15s, background-color 0.15s; } .ds-btn-primary:hover { background-color: #E88B8B; transform: scale(1.05) rotate(-1deg); } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Secondary Doodle Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Clean paper button with espresso ink outline for secondary actions.",
+      "html": "<button class=\"ds-btn-secondary\">+ เพิ่มของใหม่</button>",
+      "css": ".ds-btn-secondary { font-family: 'Mali', cursive, sans-serif; font-weight: 700; background-color: #FFF5F7; color: #3D3329; border: 2px solid #3D3329; border-radius: 16px; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: transform 0.15s, background-color 0.15s; } .ds-btn-secondary:hover { background-color: #FFFFFF; transform: scale(1.05) rotate(1deg); }"
+    },
+    {
+      "name": "Item Stock Card",
+      "kind": "card",
+      "refersTo": "card-stock",
+      "description": "2-column grid card displaying item name, stock counter, and stepper buttons.",
+      "html": "<div class=\"ds-item-card\"><div class=\"ds-card-header\"><span class=\"ds-card-name\">ไข่ไก่</span></div><div class=\"ds-card-qty\">10 <span class=\"ds-card-unit\">ฟอง</span></div><div class=\"ds-card-actions\"><button class=\"ds-stepper-btn\">-</button><button class=\"ds-stepper-btn\">+</button></div></div>",
+      "css": ".ds-item-card { font-family: 'Mali', cursive, sans-serif; background: #FFFFFF; border: 3px solid #E88B8B; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 2px 4px rgba(61, 51, 41, 0.05); } .ds-card-name { font-weight: 700; font-size: 18px; color: #3D3329; } .ds-card-qty { font-size: 32px; font-weight: 700; color: #3D3329; text-align: center; } .ds-card-unit { font-size: 16px; font-weight: 400; color: #8B7E6A; } .ds-card-actions { display: flex; justify-content: space-between; gap: 8px; } .ds-stepper-btn { flex: 1; padding: 6px; border-radius: 9999px; border: 2px solid #3D3329; background: #FFF5F7; font-weight: 700; cursor: pointer; }"
+    },
+    {
+      "name": "Status Bounce Badge",
+      "kind": "chip",
+      "refersTo": "badge-bounce",
+      "description": "Alert badge that floats on card corners.",
+      "html": "<div class=\"ds-bounce-badge\">ใกล้หมด!</div>",
+      "css": ".ds-bounce-badge { font-family: 'Mali', cursive, sans-serif; display: inline-block; font-size: 12px; font-weight: 700; color: #3D3329; background: #FFE082; border: 2px solid #3D3329; border-radius: 9999px; padding: 4px 10px; animation: ds-bounce 1.5s infinite ease-in-out; } @keyframes ds-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }"
+    },
+    {
+      "name": "Toast Alert Pill",
+      "kind": "custom",
+      "refersTo": "toast-alert",
+      "description": "Floating message banner with rounded corners and high-contrast color.",
+      "html": "<div class=\"ds-toast\"><span class=\"ds-toast-text\">บันทึกสำเร็จเรียบร้อย!</span></div>",
+      "css": ".ds-toast { font-family: 'Mali', cursive, sans-serif; background: #C8E6C9; color: #3D3329; border: 2px solid #3D3329; border-radius: 12px; padding: 12px 20px; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; box-shadow: 0 4px 12px rgba(61, 51, 41, 0.15); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Playful Hippo Pantry",
+    "overview": "Moodeng Stock is designed as an inviting, tactile digital pantry. It borrows the warmth and charm of a kitchen whiteboard and hand-pinned sticky notes, combining pastel softness with clean structure. Rather than overwhelming users with noisy cartoon clutter or cold enterprise grids, the interface balances minimalist order with delightful tactile details. Every surface is purposeful, organized, and optimized for quick one-handed mobile interactions.",
+    "keyCharacteristics": [
+      "Warm Pastel Harmony: Soft blush pinks, cream papers, and soft kitchen blues create an approachable, low-stress environment.",
+      "Tactile Chunky Edges: Solid 2px–3px dark ink strokes ground interactive components, recalling wooden toys and stationery.",
+      "Balanced Order: Minimalist layout discipline ensures cards align neatly in a responsive 2-column mobile grid.",
+      "No-Native Dialogue Doctrine: All feedback uses custom in-app doodle toasts and mascot alerts."
+    ],
+    "rules": [
+      {
+        "name": "The Espresso Outline Rule",
+        "body": "Never use pitch-black (#000000) for borders or text. Always use Espresso Ink (#3D3329). It preserves warmth while providing strong visual contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Functional Pastel Rule",
+        "body": "Soft pastels (Piggy, Mint, Honey) are strictly paired with dark ink text. They are never paired with white text unless backed by a high-contrast state token.",
+        "section": "colors"
+      },
+      {
+        "name": "The Friendly Hand Rule",
+        "body": "Typography across all levels must consistently use Mali to uphold the handwriting aesthetic.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink-Before-Shadow Rule",
+        "body": "Never rely solely on shadow to separate overlapping white-on-paper surfaces. Every card must carry an explicit ink border or distinct background tint.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep action buttons visible at all times on cards to support mobile touch screens.",
+      "Do use Espresso Ink (#3D3329) for borders, text, and icons instead of pure black.",
+      "Do persist shopping cart and draft state to Local Storage across tab switches.",
+      "Do use custom SVG doodle icons and mascot badges for feedback."
+    ],
+    "donts": [
+      "Don't invoke native browser dialogs (window.alert, window.confirm, window.prompt).",
+      "Don't hide critical buttons behind hover states (group-hover:opacity-100).",
+      "Don't introduce pure black (#000000) or cold corporate blue palettes.",
+      "Don't stretch item lists into a single wide desktop table; maintain the cozy card grid."
+    ]
+  }
+}

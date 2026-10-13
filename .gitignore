@@ -4,3 +4,11 @@ dist/
 .output/
 .vinxi/
 .vercel/
+scratch/
+test-app/
+*.timestamp_*.js
+.impeccable/config.local.json
+.agent/
+.agents/
+.codex/
+.gemini/

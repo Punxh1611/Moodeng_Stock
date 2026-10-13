@@ -19,7 +19,7 @@ export function FridgeNote({ content, noteStyle, isTodayMenu, onEdit, onDelete }
       case 'blue-lines':
         return 'bg-blue-50 border-2 border-blue-200 text-blue-900 rounded-md shadow-md -rotate-1 bg-[repeating-linear-gradient(transparent,transparent_24px,#cbd5e1_25px)] leading-[25px] pt-8';
       case 'memo-pad':
-        return 'bg-amber-50 border-t-[12px] border-t-amber-300 border-x-2 border-b-2 border-amber-200 text-amber-900 rounded-sm shadow-md rotate-2';
+        return 'bg-amber-50 border-2 border-amber-200 border-t-[12px] border-t-amber-300 text-amber-900 shadow-md rotate-2';
       case 'yellow-classic':
       default:
         return 'bg-yellow-200 border-2 border-yellow-400 text-yellow-900 rounded-br-2xl shadow-md -rotate-2';
@@ -44,7 +44,7 @@ export function FridgeNote({ content, noteStyle, isTodayMenu, onEdit, onDelete }
       )}
 
       {isTodayMenu && (
-        <div className="absolute -top-4 -right-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg rotate-12 border-2 border-white animate-bounce">
+        <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md rotate-6 border-2 border-white animate-[bounce-badge_2s_infinite_ease-in-out]">
           ✨ วันนี้!
         </div>
       )}

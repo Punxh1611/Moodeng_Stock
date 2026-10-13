@@ -90,25 +90,29 @@ export function KitchenTab() {
       <div className="bg-[#EAF2FF] -mx-4 sm:-mx-6 md:-mx-8 -mt-4 sm:-mt-6 md:-mt-8 p-6 sm:p-8 rounded-b-[2rem] shadow-[0_8px_20px_rgba(0,0,0,0.08)] min-h-[70vh]">
         
         {/* Whiteboard for today's menu */}
-        <div className="bg-white rounded-xl border-[6px] border-gray-300 shadow-md p-6 mb-8 relative max-w-lg mx-auto transform -rotate-1">
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-2 bg-gray-200 rounded-full"></div>
-          <h2 className="text-2xl font-bold text-ink mb-4 flex items-center justify-center gap-2">
-            <ChefIcon className="w-8 h-8 text-blue-500" /> เมนูอาหารวันนี้
+        <div className="bg-white rounded-3xl border-[3px] border-ink shadow-[0_5px_0_#3D3329] p-5 sm:p-7 mb-7 relative max-w-lg mx-auto">
+          {/* Magnets */}
+          <div className="absolute top-3 left-3 w-3.5 h-3.5 bg-red-400 rounded-full border border-ink shadow-xs"></div>
+          <div className="absolute top-3 right-3 w-3.5 h-3.5 bg-yellow-400 rounded-full border border-ink shadow-xs"></div>
+
+          <h2 className="text-xl sm:text-2xl font-bold text-ink mb-3 flex items-center justify-center gap-2 text-center">
+            <ChefIcon className="w-7 h-7 text-ink" /> 
+            <span>เมนูอาหารประจำวันนี้ ✨</span>
           </h2>
           
           {todayMenu ? (
-            <div className="text-center">
-              <p className="text-3xl text-blue-600 font-bold whitespace-pre-wrap">{todayMenu.content}</p>
-              <div className="mt-4 flex justify-center">
-                <DoodleButton onClick={() => setAsTodayMenu('')} variant="secondary" className="text-sm py-1 px-3">
-                  ยกเลิกเมนูวันนี้
+            <div className="text-center py-2">
+              <p className="text-2xl sm:text-3xl text-ink font-bold whitespace-pre-wrap tracking-tight">{todayMenu.content}</p>
+              <div className="mt-3 flex justify-center">
+                <DoodleButton onClick={() => setAsTodayMenu('')} variant="secondary" size="sm" className="text-xs sm:text-sm py-1 px-3">
+                  ✕ ยกเลิกเมนูวันนี้
                 </DoodleButton>
               </div>
             </div>
           ) : (
-            <div className="text-center text-pencil text-xl flex flex-col items-center">
-              <MooDengMascot mood="sad" size={60} className="mb-2 opacity-50" />
-              ยังไม่มีเมนูสำหรับวันนี้เลย...
+            <div className="text-center text-pencil text-base sm:text-lg flex flex-col items-center py-2">
+              <MooDengMascot mood="happy" size={54} className="mb-1.5 opacity-80" />
+              <span>ยังไม่ได้เลือกเมนูเลย... กดปุ่ม "กินวันนี้!" ที่โน้ตได้เลยนะ</span>
             </div>
           )}
         </div>
